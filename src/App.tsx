@@ -1,5 +1,6 @@
 import { Counter } from "./bases/Counter";
 import { CounterBy } from "./bases/CounterBy";
+import { CounterEffect } from "./bases/CounterEffect";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <hr/>
       <Counter initialValue = { 15 }/>
       <CounterBy />
+      <CounterEffect/>
     </>
   );
 }

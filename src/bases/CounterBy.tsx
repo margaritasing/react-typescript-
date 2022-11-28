@@ -2,23 +2,28 @@ import { click } from "@testing-library/user-event/dist/click";
 import { useState } from "react"
 
 interface Props {
-    initialValue?: number;
+  initialValue?: number;
+}
+
+interface CounterState {
+  counter:number,
+  clicks: number,
 }
 
 
 export const CounterBy = ({initialValue = 0 }: Props) => {
 
-const [counterState, setCounterState] = useState({ // se le pasa un objeto a el estado
+const [{ counter, clicks }, setCounterState] = useState<CounterState>({ // Se le pasa un objeto a el estado
     counter: initialValue,                         // porque se necesita saber los dos valores 
-    clicks: 0,                                     // cantidad de click y la suma del contador
+    clicks: 0,                                     // cantidad de click y la suma del contador.
 });
 
-const { counter, clicks } = counterState; 
+
 
 const handleClick = (value:number) => {
-    setCounterState(pre => ({
-      counter: pre.counter + value,
-      clicks: pre.clicks + 1
+    setCounterState(({clicks, counter}) => ({
+      counter: counter + value,
+      clicks: clicks + 1
     }));
 }
 
