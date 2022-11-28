@@ -1,21 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-interface Props {
-    initialValue?: number;
+const MAXIMUN_COUNT = 10;
+
+
+export const CounterEffect = () => {
+
+const [counter, setCounter] = useState(5);
+
+const handleClick = () => { 
+  setCounter(pre => Math.min(pre + 1, MAXIMUN_COUNT));
 }
 
+useEffect(() => {
+  
+}, [])
 
-export const CounterEffect = ({initialValue = 0 }: Props) => {
-
-const [counter, setCounter] = useState(initialValue);
-
-const handleClick = () => {
-    setCounter(pre => pre + 1);
-}
 
   return (
     <div>
-       <h1>Counter: { counter }</h1>
+       <h1>CounterEffect: { counter }</h1>
        <button onClick={handleClick}>+1</button>
     </div>
   )

@@ -31,7 +31,7 @@ const handleClick = (value:number) => {
 
   return (
     <div>
-       <h1>CounterBY: { counter }</h1>
+       <h1>CounterBy: { counter }</h1>
        <h1>Clicks: { clicks }</h1>
        <button onClick={ () => handleClick(1) }>+1</button>
        <button onClick={ () => handleClick(5) }>+5</button>
