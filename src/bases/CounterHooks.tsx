@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 const MAXIMUN_COUNT = 10;
 
 
-export const CounterEffect = () => {
+export const CounterHooks = () => {
 
 const [counter, setCounter] = useState(5);
 const counterElement = useRef<HTMLHeadingElement>(null)
