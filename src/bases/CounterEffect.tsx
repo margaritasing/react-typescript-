@@ -12,8 +12,9 @@ const handleClick = () => {
 }
 
 useEffect(() => {
-  
-}, [])
+  if (counter < 10) return ; 
+  console.log('%cSe llego al valor máximo', 'color:red; background-color:black')
+}, [counter])
 
 
   return (
