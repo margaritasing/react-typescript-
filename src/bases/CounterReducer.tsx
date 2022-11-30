@@ -1,5 +1,4 @@
-import { type } from "os";
-import { useReducer, useState } from "react"
+import { useReducer } from "react"
 
 interface  CounterState {
   counter:number,
