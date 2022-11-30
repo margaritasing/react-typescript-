@@ -19,12 +19,22 @@ type CounterAction =
 
 
 const counterReducerComponent = (state:CounterState, action: CounterAction): CounterState => {
-    switch (action.type) {
+  const { counter, changes } = state;  
+
+  switch (action.type) {
       case 'reset':
           return {
             counter:0,
             previous: 0,
             changes:0
+          }
+
+      case 'incremental':       
+          return {
+            changes: changes + 1,
+            counter: counter + action.payload.value,
+            previous: counter            
+                    
           }
     
       default:
@@ -35,14 +45,31 @@ const counterReducerComponent = (state:CounterState, action: CounterAction): Cou
 
 export const CounterReducer = () => {
 
-const [{counter, previous, changes }, dispatch] = useReducer(counterReducerComponent, INITIAL_STATE)
+const [ counterState , dispatch] = useReducer(counterReducerComponent, INITIAL_STATE)
 const handleClick = () => {
-    dispatch({ type:'reset' })
+  dispatch({ type:'reset' })
+}
+
+const increaseBy = (value:number) => {
+  dispatch({ type: 'incremental', payload:{ value } })
+
 }
 
   return (
     <div>
-      <h1>CounterReducer: { counter }</h1>
+      <h1>CounterReducer</h1>
+      <pre>
+        { JSON.stringify( counterState, null, 2 ) }
+      </pre>
+      <button onClick={() => increaseBy(1) }>
+        +1
+      </button>
+      <button onClick={() => increaseBy(5) }>
+        +5
+      </button>
+      <button onClick={() => increaseBy(10) }>
+        +10
+      </button>
       <button onClick={handleClick}>
         Reset
       </button>
