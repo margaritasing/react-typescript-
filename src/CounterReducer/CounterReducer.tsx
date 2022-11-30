@@ -1,7 +1,7 @@
-import { type } from "os";
-import { useReducer, useState } from "react"
+import { useReducer } from "react"
 import { CounterState } from "./interface/interfaces";
 import { counterReducerComponent } from "./reducer/counterReducer";
+import * as action  from './actions/action';
 
 
 
@@ -14,19 +14,20 @@ const INITIAL_STATE: CounterState = {
 
 export const CounterReducer = () => {
 
-const [ counterState , dispatch] = useReducer(counterReducerComponent, INITIAL_STATE)
+const [ counterState , dispatch] = useReducer(counterReducerComponent, INITIAL_STATE);
+
 const handleClick = () => {
-  dispatch({ type:'reset' })
+  dispatch( action.doReset() )
 }
 
 const increaseBy = (value:number) => {
-  dispatch({ type: 'incremental', payload:{ value } })
+  dispatch(action.doIncremental(value))
 
 }
 
   return (
     <div>
-      <h1>CounterReducer Sementado</h1>
+      <h1>CounterReducer Segmentado</h1>
       <pre>
         { JSON.stringify( counterState, null, 2 ) }
       </pre>
